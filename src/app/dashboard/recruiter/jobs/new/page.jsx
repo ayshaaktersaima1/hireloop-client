@@ -13,6 +13,8 @@ import {
     TextArea,
     TextField,
 } from "@heroui/react";
+import { createJob } from "@/lib/actions/jobs";
+import { redirect } from "next/navigation";
 
 export default function PostJobPage() {
     const [isRemote, setIsRemote] = useState(false);
@@ -52,6 +54,13 @@ export default function PostJobPage() {
             setLoading(false);
             setMessage("Job posted successfully.");
         }, 800);
+
+        const res = await createJob(jobData);
+
+        if (res.insertedId) {
+            alert('Job posted succesfully');
+            redirect('/dashboard/recruiter')
+        }
     };
 
     return (
