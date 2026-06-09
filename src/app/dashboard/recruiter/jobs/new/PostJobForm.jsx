@@ -67,7 +67,7 @@ export default function PostJobForm({ company }) {
             isPubliclyVisible: true,
         };
 
-        console.log(jobData);
+        console.log(jobDataa);
 
         const res = await createJob(jobData);
 
